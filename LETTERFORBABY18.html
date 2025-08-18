@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dear Crush</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: pink;
+      font-family: "Georgia", serif;
+      overflow: hidden;
+      flex-direction: column;
+    }
+
+    /* Heart */
+    .heart {
+      width: 80px;
+      height: 80px;
+      background: red;
+      transform: rotate(-45deg);
+      animation: beat 1s infinite ease-in-out;
+      cursor: pointer;
+      position: relative;
+      z-index: 10;
+    }
+    .heart:before,
+    .heart:after {
+      content: "";
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      background: red;
+      border-radius: 50%;
+    }
+    .heart:before {
+      top: -40px;
+      left: 0;
+    }
+    .heart:after {
+      left: 40px;
+      top: 0;
+    }
+    @keyframes beat {
+      0%, 100% { transform: scale(1) rotate(-45deg); }
+      50% { transform: scale(1.2) rotate(-45deg); }
+    }
+
+    /* Hidden message card */
+    .card {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) translateY(-50px);
+      width: 350px;
+      background: white;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      opacity: 0;
+      transition: all 1s ease-in-out;
+      text-align: justify;
+      z-index: 5;
+    }
+
+    .card.show {
+      opacity: 1;
+      transform: translate(-50%, -50%) translateY(0);
+    }
+
+    /* When heart disappears */
+    .heart.hide {
+      opacity: 0;
+      transform: scale(0);
+      transition: all 0.8s ease-in-out;
+    }
+
+    .card h2 {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    .card p {
+      font-size: 14px;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Heart -->
+  <div class="heart" id="heart" onclick="showMessage()"></div>
+
+  <!-- Hidden Love Letter -->
+  <div class="card" id="loveLetter">
+    <h2>To my dearest, My Love,</h2>
+    <p>
+      Happy Monthsary to us. Every time I look back, I still can’t believe how everything started — from the band, to the song, to all the small moments that brought us closer. Honestly, you’re the most unexpected and beautiful thing that ever happened to me. You made me feel that life isn’t just about routines and days passing by, but about finding someone who makes every moment worth living.
+    </p>
+    <p>
+      I know I don’t always say it perfectly, but I really mean it when I say I’m grateful for you. You changed the way I see love. It’s not about big, dramatic things — it’s about us laughing together, supporting each other, and being each other’s safe place. Even when you doubt yourself or call yourself a “background character,” to me you’ve always been the highlight, the main star of my story.
+    </p>
+    <p>
+      As we celebrate this day, I just want to promise that I’ll keep choosing you, every single time. Through all the worries, the applications, the future ahead of us — I’ll always be here, walking with you, cheering for you, and loving you the best way I can. Like what we always said with our song, some things aren’t just meant to be heard — they’re meant to be lived. And you, us — we’re living proof of that.
+    </p>
+    <p style="text-align:center; margin-top: 10px;">
+      I love you, always. 💙<br>
+      — SKIBIDIBABY
+    </p>
+  </div>
+
+  <script>
+    function showMessage() {
+      // hide heart
+      document.getElementById("heart").classList.add("hide");
+      // show letter
+      setTimeout(() => {
+        document.getElementById("loveLetter").classList.add("show");
+      }, 600); // slight delay for smooth transition
+    }
+  </script>
+
+</body>
+</html>
